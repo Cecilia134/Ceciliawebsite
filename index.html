@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cecilia Manyuat — Software Engineer</title>
+<meta name="description" content="Cecilia Manyuat: CS graduate, entrepreneurship minor, builder at heart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --surface: #111b2e;
+  --surface-raised: #152238;
+  --ink: #f3f6fb;
+  --muted: #aab6c8;
+  --accent: #76e3d2;
+  --line: rgba(195, 211, 235, .13);
+  --content: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 75% 4%, rgba(32, 90, 112, .2), transparent 34rem),
+    var(--bg);
+  color: var(--muted);
+  font: 16px/1.7 "Hanken Grotesk", system-ui, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--ink); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 3px; }
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: .8rem max(1.5rem, calc((100vw - var(--content)) / 2));
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 17, 32, .92);
+  backdrop-filter: blur(16px);
+}
+nav .name { color: var(--ink); font-size: 1rem; font-weight: 700; white-space: nowrap; }
+nav .name::before { content: "CM"; display: inline-grid; place-items: center; width: 2rem; height: 2rem; margin-right: .65rem; border: 1px solid var(--line); border-radius: 8px; color: var(--accent); font-size: .72rem; letter-spacing: .04em; }
+nav ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .35rem .15rem; list-style: none; margin: 0; padding: 0; }
+nav ul a { display: block; padding: .5rem .7rem; border-radius: 7px; color: var(--muted); font-size: .88rem; white-space: nowrap; }
+nav ul a:hover { background: var(--surface-raised); color: var(--ink); }
+nav ul li:last-child a { border: 1px solid rgba(118, 227, 210, .4); color: var(--accent); }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(280px, .82fr) minmax(0, 1.18fr);
+  align-items: center;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  max-width: var(--content);
+  min-height: 680px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+.hero img { display: block; width: 100%; aspect-ratio: 4 / 5; max-height: 540px; object-fit: cover; object-position: center 38%; border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 28px 80px rgba(0, 0, 0, .28); }
+.hero .intro { padding: 1rem 0; text-align: left; }
+.tag { color: var(--accent); }
+.hero .tag { font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.hero h1 { margin: .55rem 0 .8rem; color: var(--ink); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 700; letter-spacing: -.055em; line-height: 1.04; }
+.hero .intro > div:nth-of-type(2) { color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.45rem); }
+.toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; list-style: none; margin: 2rem 0 0; padding: 0; }
+.toc li { min-width: 0; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 11px; background: rgba(17, 27, 46, .74); color: var(--muted); font-size: .83rem; line-height: 1.5; }
+.toc li:last-child { grid-column: 1 / -1; }
+.toc a { color: var(--ink); font-weight: 700; }
+.toc a:hover { color: var(--accent); }
+.toc b { font-weight: 500; }
+.toc b span { margin-right: .45rem; color: var(--accent); font-size: .76rem; }
+section { max-width: var(--content); margin: 0 auto; padding: 5.5rem 1.5rem; border-top: 1px solid var(--line); }
+h2 { display: flex; align-items: baseline; gap: .9rem; margin: 0 0 2.3rem; color: var(--ink); font-size: clamp(1.8rem, 3.5vw, 2.5rem); letter-spacing: -.035em; line-height: 1.2; }
+h2 small { color: var(--accent); font-size: .82rem; font-weight: 500; letter-spacing: .08em; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.about p { margin: 0 0 1.2rem; }
+.about a { text-decoration: underline; text-underline-offset: 3px; }
+.stack { padding: 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.stack > p { margin: 0 0 1rem; font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.stack div { margin-bottom: 1rem; }
+.stack div:last-child { margin-bottom: 0; }
+.stack h3,.job h3,.card h3 { margin: 0; color: var(--ink); font-size: 1.05rem; font-weight: 700; }
+.job { margin-bottom: 1rem; padding: 1.35rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.job .role { margin: .15rem 0 0; color: var(--accent); }
+.job .when { margin: .15rem 0 1rem; color: #8290a6; font-size: .87rem; }
+.job ul { list-style: none; margin: 0; padding: 0; }
+.job li { position: relative; margin-top: .5rem; padding-left: 1rem; }
+.job li::before { position: absolute; left: 0; color: var(--accent); content: "›"; }
+.card { margin-bottom: 1rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.card .tag { margin: 0 0 .4rem; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.card p { margin: .6rem 0 1rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .45rem; justify-content: flex-start; font-size: .82rem; }
+.chips span { padding: .2rem .65rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface-raised); color: #c4cfde; }
+.essay-ideas { margin: 0; padding: 1.5rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.essay-ideas h3,.writing-article h3 { margin: 0; color: var(--ink); font-size: 1.1rem; }
+.essay-ideas ul { margin: .8rem 0 0; padding-left: 1.25rem; }
+.essays li { margin-bottom: .65rem; color: var(--muted); }
+.essays li:last-child { margin-bottom: 0; }
+.writing-posts { margin-top: 1.25rem; }
+.writing-posts > h3 { margin: 0 0 .8rem; color: var(--ink); font-size: 1.2rem; }
+.writing-article { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.writing-article summary { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 1.5rem; cursor: pointer; list-style: none; }
+.writing-article summary::-webkit-details-marker { display: none; }
+.writing-article summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.writing-kicker { display: block; margin-bottom: .4rem; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.writing-article h3 { font-size: 1.2rem; }
+.writing-description { display: block; margin-top: .25rem; color: #8290a6; font-size: .88rem; }
+.writing-toggle { flex: 0 0 auto; color: var(--accent); font-size: .88rem; font-weight: 700; }
+.writing-toggle::after { content: "Read article +"; }
+.writing-article[open] .writing-toggle::after { content: "Close article −"; }
+.writing-body { max-width: 78ch; padding: 1.25rem 1.5rem 1.5rem; border-top: 1px solid var(--line); color: var(--muted); }
+.writing-body h4 { margin: 1.5rem 0 .4rem; color: var(--ink); font-size: 1.05rem; }
+.writing-body p { margin: 0 0 1rem; }
+.writing-body p:last-child { margin-bottom: 0; }
+.hobbies { display: grid; grid-template-columns: repeat(3, 1fr); align-content: center; gap: .7rem; }
+.hobbies span { padding: .65rem .5rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--accent); text-align: center; }
+.contact { max-width: var(--content); margin: 0 auto 4rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: 20px; background: linear-gradient(135deg, var(--surface-raised), var(--surface)); text-align: left; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); align-items: center; gap: clamp(2rem, 5vw, 4rem); }
+.contact h2 { justify-content: flex-start; margin-bottom: 1.5rem; }
+.contact-copy > .tag { margin: 0 0 .6rem; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.contact h3 { max-width: 18ch; margin: 0; color: var(--ink); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; letter-spacing: -.04em; line-height: 1.15; }
+.contact-copy > p:not(.tag) { max-width: 56ch; margin: 1rem 0 0; }
+.contact .contact-credentials { margin: 1.5rem 0 0; padding-top: 1rem; border-top: 1px solid var(--line); font-size: .9rem; font-weight: 400; letter-spacing: normal; text-transform: none; }
+.contact-details { padding: 1.35rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(11, 17, 32, .45); }
+.contact-email { display: block; padding-bottom: 1rem; border-bottom: 1px solid var(--line); font-size: 1.05rem; font-weight: 700; overflow-wrap: anywhere; }
+.contact .links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; margin-top: 1rem; }
+.contact .links > * { padding: .55rem .45rem; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font-size: .88rem; text-align: center; }
+.contact .links a:hover { border-color: rgba(118, 227, 210, .4); color: var(--accent); }
+footer { padding: 1.5rem; border-top: 1px solid var(--line); color: #8290a6; font-size: .88rem; text-align: center; }
+@media (max-width: 900px) {
+  nav { align-items: flex-start; flex-direction: column; gap: .45rem; padding: .8rem 1.25rem; }
+  nav ul { justify-content: flex-start; }
+  nav ul a { padding: .4rem .55rem; }
+  .hero { min-height: auto; gap: 2rem; padding: 4rem 1.25rem; }
+  .hero img { max-height: 460px; }
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 120px; }
+  nav ul { flex-wrap: nowrap; width: 100%; overflow-x: auto; padding-bottom: .25rem; }
+  nav ul a { font-size: .82rem; }
+  .hero { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 2.5rem; }
+  .hero .intro { grid-row: 1; padding: .5rem 0; }
+  .hero img { grid-row: 2; width: min(100%, 300px); max-height: 320px; margin: 0 auto; aspect-ratio: 4 / 3; }
+  .toc { grid-template-columns: 1fr; }
+  .toc li:last-child { grid-column: auto; }
+  section { padding: 4rem 1.25rem; }
+  .two { grid-template-columns: 1fr; gap: .85rem; }
+  .contact { margin: 0 1.25rem 3rem; padding: 2rem 1.25rem; }
+  .contact-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hobbies { gap: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="name" href="#home">Cecilia Manyuat</a>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#essays">Writing &amp; Hobbies</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="Cecilia_Manyuat_Resume.pdf">Resume</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="home">
+  <img src="photo.jpg" alt="Cecilia Manyuat smiling while reading a book">
+  <div class="intro">
+    <div class="tag">// Hi, my name is</div>
+    <h1>Cecilia Manyuat.</h1>
+    <div>I turn ideas into impact.</div>
+    <ul class="toc">
+      <li><a href="#about"><b><span>01</span>About</b></a><br>CS background · Entrepreneurship minor · Builder at heart</li>
+      <li><a href="#experience"><b><span>02</span>Experience</b></a><br>Vesoko · Bank of South Sudan · Skill Rev</li>
+      <li><a href="#projects"><b><span>03</span>Projects</b></a><br>Mela Cash · Digital Currency · CTF</li>
+      <li><a href="#essays"><b><span>04</span>Writing &amp; Hobbies</b></a><br>Tech stories · Travel · Sports</li>
+      <li><a href="#contact"><b><span>05</span>Contact</b></a><br>Excited to collaborate</li>
+    </ul>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <h2>About Me <small>01</small></h2>
+  <div class="two">
+    <div>
+      <p>Hi! I'm Cecilia, a CS graduate from <a href="https://www.oc.edu" style="text-decoration:none">Oklahoma Christian University</a> with a minor in Entrepreneurship. I'm passionate about building technology that solves real problems for real communities.</p>
+      <p>I've shipped mobile apps, payment platforms, and web features across internships in startup and financial tech environments. I'm a <span class="tag">Certified Manufacturing Associate</span> and competed in the National Cyber League CTF.</p>
+      <p>Beyond the screen, I love basketball, volleyball, biking, traveling, getting lost in nature, and writing. I'm building toward founding my own company, I think like a CEO, ship like an engineer.</p>
+    </div>
+    <div class="stack">
+      <p class="tag">// tech stack</p>
+      <div><h3>Languages</h3>Python, JavaScript, Java, C++</div>
+      <div><h3>Frontend</h3>React, Next.js, Vue.js, HTML, CSS</div>
+      <div><h3>Backend</h3>Node.js, Express.js, REST APIs</div>
+      <div><h3>Database</h3>SQL, MongoDB, MySQL</div>
+      <div><h3>Cloud</h3>AWS (EC2, S3, CloudFront, etc.)</div>
+      <div><h3>Tools</h3>Git, JIRA, Agile/Scrum, CI/CD</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience <small>02</small></h2>
+  <div class="two">
+    <div>
+      <div class="job">
+        <h3>Vesoko Inc</h3><p class="role">Software Engineer Intern</p><p class="when">Nov 2025 – May 2026</p>
+        <ul>
+          <li>Shipped 3+ React &amp; Next.js features, reducing page load time by 15%</li>
+          <li>Resolved 5+ production bugs, cutting user-reported errors by 10</li>
+          <li>Automated release docs, saving 20% prep time per release cycle</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Bank of South Sudan — Digital Currency Project</h3><p class="role">Software Engineer Intern</p><p class="when">May 2025 – Sept 2025</p>
+        <ul>
+          <li>Architected a secure mobile payment platform in Vue.js, Node.js &amp; SQL</li>
+          <li>Designed schemas for high-volume transaction tracking at scale</li>
+          <li>Led 3 end-to-end testing cycles before production launch</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="job">
+        <h3>Skill Rev</h3><p class="role">Frontend Development Intern</p><p class="when">July – Sept 2023</p>
+        <ul>
+          <li>Built 5+ interactive components, improving load performance by 20%</li>
+          <li>Delivered all Agile sprint features on time across 2-week cycles</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Digitel South Sudan</h3><p class="role">IT Technical Support Intern</p><p class="when">June – Aug 2022</p>
+        <ul>
+          <li>Resolved 30+ support tickets per week with consistent satisfaction scores</li>
+          <li>Authored 10+ SOPs, reducing issue resolution time by 25%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects <small>03</small></h2>
+  <div class="two">
+    <div class="card">
+      <p class="tag">// featured project</p><h3>Mela Cash</h3>
+      <p>A peer-to-peer mobile money transfer app built for communities in South Sudan with no access to digital payments. Achieved strong adoption with a majority of the target user base using it for everyday transactions.</p>
+      <div class="chips"><span>Flutter</span><span>Dart</span><span>REST APIs</span><span>Auth</span></div>
+    </div>
+    <div class="card">
+      <p class="tag">// fintech</p><h3>Digital Currency Platform</h3>
+      <p>Architected a secure mobile payment platform for the Bank of South Sudan, enabling digital transactions for underserved communities. Built schemas supporting thousands of records with full data integrity.</p>
+      <div class="chips"><span>Vue.js</span><span>Node.js</span><span>SQL</span></div>
+    </div>
+    <div class="card">
+      <p class="tag">// cybersecurity</p><h3>NCL CTF Competition</h3>
+      <p>Competed in the National Cyber League Capture the Flag, applying skills in network forensics, cryptography, log analysis, and vulnerability exploitation across real-world attack scenarios.</p>
+      <div class="chips"><span>Forensics</span><span>Cryptography</span><span>Log Analysis</span></div>
+    </div>
+    <div class="card">
+      <p class="tag">// certification</p><h3>Certified Manufacturing Associate</h3>
+      <p>Earned a Certified Manufacturing Associate credential, demonstrating adaptability and commitment to continuous learning across technical disciplines beyond software.</p>
+      <div class="chips"><span>Manufacturing</span><span>Quality System</span><span>Automation</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="essays" class="essays">
+  <h2>Essays &amp; Blog &amp; Hobbies <small>04</small></h2>
+  <div class="two">
+    <div class="essay-ideas">
+      <h3>Topics to explore</h3>
+      <ul>
+        <li>My Money Was Stolen at Home. So I Built an App.</li>
+        <li>What My Entrepreneurship Minor Taught Me That CS Didn't</li>
+        <li>Growing Up Between Two Worlds: South Sudan &amp; America</li>
+        <li>The Books That Changed How I Code</li>
+        <li>What Basketball Taught Me About Agile Sprints</li>
+        <li>How Travel Makes You a Better Developer</li>
+      </ul>
+    </div>
+    <div class="hobbies">
+      <span>basketball</span><span>volleyball</span><span>novels</span>
+      <span>writing</span><span>biking</span><span>travel</span>
+      <span>nature</span><span>future founder</span><span>music</span>
+    </div>
+  </div>
+  <div class="writing-posts">
+    <h3>Latest writing</h3>
+    <details class="writing-article">
+      <summary>
+        <span>
+          <span class="writing-kicker">Personal essay</span>
+          <h3>My Money Was Stolen at Home. So I Built an App.</h3>
+          <span class="writing-description">How a painful experience at home inspired a safer way to manage money.</span>
+        </span>
+        <span class="writing-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="writing-body">
+        <p>When I went home to South Sudan, my money was stolen.</p>
+        <p>It was cash, of course. It was in my bag, then it wasn't. There was no transaction to trace, no account to freeze, no one to call. It was simply gone.</p>
+        <p>At first, I felt it as a personal loss. But the more I thought about it, the more I realized how ordinary my story was. In South Sudan, many of us live with cash. We carry it, hide it, count it twice, and hope. Saving, sending, and spending money all depend on holding paper in our hands, and that means one bad moment can erase months of work.</p>
+        <p>I did not want that to be normal anymore.</p>
+
+        <h4>Starting before I was ready</h4>
+        <p>I began building a money app before I had a salary. There was no budget and no safety net, only a problem I could not stop thinking about. Waiting until I was comfortable would have meant waiting while the same thing kept happening to people around me.</p>
+        <p>Being without a steady income also kept me honest. I could not afford to build things nobody needed. Every feature had to earn its place.</p>
+
+        <h4>It starts with listening</h4>
+        <p>Building a money app starts with more than writing code. It starts with listening to people, understanding the problem they face, and making sure the technology fits into their everyday lives.</p>
+        <p>That idea shaped how I approached the whole project. I wanted the experience to be clear. I wanted the important actions to be easy to find, so that someone opening the app for the first time would not feel lost or intimidated. Money is already stressful. The tool you use to manage it should not add to that.</p>
+        <p>Most of all, I wanted to build around real needs, not around what looked impressive. The theft taught me what one of those needs is: a safer place for money than a pocket or a bag.</p>
+
+        <h4>A product is never finished</h4>
+        <p>The other lesson was that the first version is only the beginning. People will use what you build in ways you did not expect, and they will get confused by things that seemed obvious to you. That is not failure. That is feedback.</p>
+        <p>So you learn from people, fix what is unclear, and keep building.</p>
+
+        <h4>Why it matters</h4>
+        <p>I built this app because of one painful experience, but I kept building it because of what that experience revealed. Many South Sudanese rely on cash, and with cash comes risk. If technology can reduce that risk in a way that fits naturally into daily life, then it is worth the effort, even before the salary arrives.</p>
+        <p>I am still learning, and the app is still growing. But I know why I started.</p>
+        <p>Building a money app starts with more than writing code. It starts with listening to people, understanding the problem they face, and making sure the technology fits into their everyday lives.</p>
+        <p>That idea shaped the way I approached this project: keep the experience clear, make the important actions easy to find, and build around real needs. It also taught me that a useful product is never finished after the first version. You learn from people, improve what is confusing, and keep building.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact-layout">
+    <div class="contact-copy">
+      <h2>Contact <small>05</small></h2>
+      <p class="tag">// what's next?</p>
+      <h3>Let's build something great.</h3>
+      <p>Whether you're looking for a full-stack engineer, a collaborator, or want to talk startups, books, basketball, or travel, I'd love to connect.</p>
+      <p class="tag contact-credentials">Computer Science, Entrepreneurship<br>and Certified Manufacturing Associate</p>
+    </div>
+    <div class="contact-details">
+      <a class="contact-email" href="mailto:ceciliamanyuat@gmail.com">ceciliamanyuat@gmail.com</a>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/cecilia-manyuat-98486420b/">LinkedIn</a>
+        <a href="https://github.com/Cecilia134">GitHub</a>
+        <a href="tel:+14058566734">405-856-6734</a>
+        <span>Rochester, NY</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Cecilia Manyuat · Rochester, NY · Open to Relocate · <span class="tag">I don't just write code, I build futures.</span></footer>
+
+</body>
+</html>
